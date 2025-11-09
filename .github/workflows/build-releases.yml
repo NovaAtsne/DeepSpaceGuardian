@@ -1,0 +1,32 @@
+name: Build Game Releases
+
+on:
+  push:
+    tags: ['v*']
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+        
+      - name: Build game
+        run: python scripts/build_${{ matrix.os }}.py
+        
+      - name: Upload release
+        uses: actions/upload-artifact@v3
+        with:
+          name: dodge-game-${{ matrix.os }}
+          path: dist/

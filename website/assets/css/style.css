@@ -1,0 +1,375 @@
+/* style.css - 红色末日生存主题 */
+:root {
+  /* 红色末日配色 */
+  --star-red: #ff2a2a;
+  --star-orange: #ff6b35;
+  --star-dark: #1a0f0f;
+  --star-darker: #0a0505;
+  --star-gray: #333333;
+  --star-light: #ff9999;
+  --star-glow: #ff4757;
+  
+  /* 动态颜色 */
+  --pulse-glow: var(--star-red);
+}
+
+/* 基础重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, var(--star-darker) 0%, var(--star-dark) 100%);
+  color: white;
+  font-family: 'Orbitron', 'Arial', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* 星空背景 */
+.starfield {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: 
+    radial-gradient(ellipse at center, transparent 0%, var(--star-darker) 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 42, 42, 0.1) 2px, rgba(255, 42, 42, 0.1) 4px);
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite;
+}
+
+.star.red {
+  background: var(--star-red);
+  box-shadow: 0 0 10px var(--star-red);
+}
+
+.star.orange {
+  background: var(--star-orange);
+  box-shadow: 0 0 8px var(--star-orange);
+}
+
+/* 脉冲动画 */
+@keyframes pulse-glow {
+  0%, 100% { 
+    box-shadow: 0 0 20px var(--star-red),
+                0 0 40px var(--star-red),
+                0 0 60px var(--star-red);
+  }
+  50% { 
+    box-shadow: 0 0 30px var(--star-glow),
+                0 0 60px var(--star-glow),
+                0 0 90px var(--star-glow);
+  }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* 头部样式 */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 42, 42, 0.2) 0%, 
+    transparent 70%);
+}
+
+.hero h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, var(--star-red), var(--star-orange));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 30px rgba(255, 42, 42, 0.5);
+  animation: float 3s ease-in-out infinite;
+}
+
+.hero .subtitle {
+  font-size: 1.5rem;
+  color: var(--star-light);
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px var(--star-red);
+}
+
+/* 警告框 */
+.warning-alert {
+  background: linear-gradient(135deg, 
+    rgba(255, 42, 42, 0.3) 0%, 
+    rgba(255, 107, 53, 0.2) 100%);
+  border: 2px solid var(--star-red);
+  border-radius: 15px;
+  padding: 20px;
+  margin: 30px auto;
+  max-width: 600px;
+  text-align: center;
+  animation: pulse-glow 2s infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.warning-alert::before {
+  content: "⚠️";
+  font-size: 2rem;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.warning-alert::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 下载按钮 */
+.download-section {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.download-card {
+  background: linear-gradient(135deg, 
+    rgba(51, 51, 51, 0.8) 0%, 
+    rgba(26, 15, 15, 0.9) 100%);
+  border: 2px solid var(--star-gray);
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--star-red), 
+    var(--star-orange));
+}
+
+.download-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--star-red);
+  box-shadow: 0 10px 30px rgba(255, 42, 42, 0.3);
+}
+
+.download-btn {
+  display: inline-block;
+  background: linear-gradient(45deg, var(--star-red), var(--star-orange));
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 25px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.download-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent);
+  transition: left 0.5s;
+}
+
+.download-btn:hover::before {
+  left: 100%;
+}
+
+.download-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 20px rgba(255, 42, 42, 0.5);
+}
+
+/* 游戏特性 */
+.features {
+  padding: 80px 20px;
+  background: rgba(10, 5, 5, 0.5);
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 42, 42, 0.3);
+  border-radius: 10px;
+  padding: 30px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  background: rgba(255, 42, 42, 0.1);
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+/* 故事背景 */
+.story-section {
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 50px auto;
+  position: relative;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, 
+    transparent, 
+    var(--star-red), 
+    transparent);
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  background: rgba(51, 51, 51, 0.5);
+  border: 1px solid var(--star-red);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 30px 0;
+  position: relative;
+  width: 45%;
+}
+
+.timeline-item:nth-child(odd) {
+  margin-right: 55%;
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 55%;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 20px;
+  background: var(--star-red);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-item:nth-child(odd)::before {
+  right: -60px;
+}
+
+.timeline-item:nth-child(even)::before {
+  left: -60px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  
+  .timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-item {
+    width: calc(100% - 80px);
+    margin-left: 80px !important;
+  }
+  
+  .timeline-item::before {
+    left: -50px !important;
+  }
+}
+
+/* 陨石雨动画 */
+.meteor {
+  position: fixed;
+  top: -50px;
+  width: 2px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, var(--star-red));
+  animation: meteor-fall linear forwards;
+  z-index: -1;
+}
+
+@keyframes meteor-fall {
+  to {
+    transform: translateY(100vh) rotate(45deg);
+    opacity: 0;
+  }
+}
+}

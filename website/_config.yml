@@ -1,0 +1,35 @@
+# website/_config.yml
+
+title: "星空躲避者 - Python小游戏"
+description: "一个有趣的2D躲避游戏，使用Python和Pygame开发"
+baseurl: "/dodge-game"  # 你的仓库名
+url: "https://username.github.io"
+
+# 设置网站源文件目录
+source: website
+
+# 排除不必要的文件
+exclude:
+  - src/
+  - assets/game/  # 游戏资源，不是网站资源
+  - tests/
+  - scripts/
+  - README.md
+  - requirements.txt
+  - pyproject.toml
+  - .github/
+
+# 包含下载文件
+include:
+  - downloads
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 自定义数据
+game:
+  version: "0.12.0"
+  download_url: "/dodge-game/downloads"
+  source_code: "/dodge-game/src"
