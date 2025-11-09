@@ -3,7 +3,7 @@
 title: "星空躲避者 - Python小游戏"
 description: "一个有趣的2D躲避游戏，使用Python和Pygame开发"
 baseurl: "/dodge-game"  # 你的仓库名
-url: "https://username.github.io"
+url: "https://novaatsne.github.io"
 
 # 设置网站源文件目录
 source: website
