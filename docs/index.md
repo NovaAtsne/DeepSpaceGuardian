@@ -4,6 +4,7 @@ title: "主页"
 description: "一个刺激的躲避游戏"
 date: 2025-11-09
 ---
+<link rel="stylesheet" href="/assets/css/style.css">
 
 ![Dodge Game](/assets/images/icons/dodge-game.png)
 
