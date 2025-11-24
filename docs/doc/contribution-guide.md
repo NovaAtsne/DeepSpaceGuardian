@@ -1,6 +1,5 @@
 ---
 layout: default
-<<<<<<< HEAD
 title: "贡献指南 | DeepSpaceGuardian"
 date: 2025-11-24
 ---
@@ -74,11 +73,3 @@ git push origin feature/你的功能描述
 git fetch upstream
 git merge upstream/main
 ```
-
-=======
-title: "贡献指南 | DeepSpaceGuardian 官网"
-draft: true
-date: 2025-11-22
----
-
->>>>>>> b245d705b403d8d0739eb39867b7ae0a48af1783
